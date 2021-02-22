@@ -43,4 +43,14 @@ public class AppTest {
 
         assertEquals(BigDecimal.valueOf(370), cart.total());
     }
+
+    @Test
+    public void scenarioC() {
+        cart.add(Item.of(SKU.A).withQuantity(BigDecimal.valueOf(3)));
+        cart.add(Item.of(SKU.B).withQuantity(BigDecimal.valueOf(5)));
+        cart.add(Item.of(SKU.C).withQuantity(BigDecimal.ONE));
+        cart.add(Item.of(SKU.D).withQuantity(BigDecimal.ONE));
+
+        assertEquals(BigDecimal.valueOf(280), cart.total());
+    }
 }
