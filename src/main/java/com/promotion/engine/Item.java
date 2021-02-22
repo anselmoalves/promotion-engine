@@ -1,7 +1,10 @@
 package com.promotion.engine;
 
+import lombok.Getter;
+
 import java.math.BigDecimal;
 
+@Getter
 public class Item {
 
     private final Product product;

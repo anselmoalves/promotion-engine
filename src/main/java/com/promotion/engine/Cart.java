@@ -1,16 +1,27 @@
 package com.promotion.engine;
 
-import lombok.NoArgsConstructor;
+import com.promotion.engine.rules.Rule;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-@NoArgsConstructor
 public class Cart {
 
+    private Map<SKU, Item> items;
+    private Set<Rule> rules;
+
+    public Cart(Set<Rule> rules) {
+        this.items = new HashMap<>();
+        this.rules = rules;
+    }
+
     public void add(Item item) {
+        items.put(item.getProduct().getSku(), item);
     }
 
     public BigDecimal total() {
-        return BigDecimal.valueOf(100);
+        return rules.stream().map(rule -> rule.apply(items)).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }
