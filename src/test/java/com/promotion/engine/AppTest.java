@@ -53,4 +53,14 @@ public class AppTest {
 
         assertEquals(BigDecimal.valueOf(280), cart.total());
     }
+
+    @Test
+    public void should_accumulate_items_of_sku_previously_added() {
+        cart.add(Item.of(SKU.A).withQuantity(BigDecimal.ONE));
+        cart.add(Item.of(SKU.B).withQuantity(BigDecimal.ONE));
+        cart.add(Item.of(SKU.C).withQuantity(BigDecimal.ONE));
+        cart.add(Item.of(SKU.A).withQuantity(BigDecimal.ONE));
+
+        assertEquals(BigDecimal.valueOf(150), cart.total());
+    }
 }
