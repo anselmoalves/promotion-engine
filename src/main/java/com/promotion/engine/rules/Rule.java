@@ -8,4 +8,6 @@ import java.util.Map;
 import java.util.function.Function;
 
 public interface Rule extends Function<Map<SKU, Item>, BigDecimal> {
+
+    String getName();
 }
