@@ -18,7 +18,8 @@ public class Cart {
     }
 
     public void add(Item item) {
-        items.put(item.getSku(), item);
+        items.put(item.getSku(), Item.of(item.getSku()).withQuantity(items.getOrDefault(item.getSku(), Item
+                .of(item.getSku())).getQuantity().add(item.getQuantity())));
     }
 
     public BigDecimal total() {
