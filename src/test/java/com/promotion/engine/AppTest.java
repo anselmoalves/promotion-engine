@@ -63,4 +63,14 @@ public class AppTest {
 
         assertEquals(BigDecimal.valueOf(150), cart.total());
     }
+
+    @Test
+    public void should_not_allow_multiple_evaluations_of_the_same_rule() {
+        Set<Rule> duplicateRules = Collections.unmodifiableSet(new HashSet<>(Arrays.asList(new RuleA(), new RuleA())));
+        cart = new Cart(duplicateRules);
+
+        cart.add(Item.of(SKU.A).withQuantity(BigDecimal.ONE));
+
+        assertEquals(BigDecimal.valueOf(50), cart.total());
+    }
 }
