@@ -18,7 +18,7 @@ public class RuleB implements Rule {
 
     @Override
     public BigDecimal apply(Map<SKU, Item> items) {
-        BigDecimal quantity = items.getOrDefault(SKU.B, new Item(new Product(SKU.B), BigDecimal.ZERO)).getQuantity();
+        BigDecimal quantity = items.getOrDefault(SKU.B, Item.of(SKU.B).withQuantity(BigDecimal.ZERO)).getQuantity();
         BigDecimal bundledQuantity = (quantity.subtract(quantity.remainder(BUNDLE_QUANTITY)))
                 .divide(BUNDLE_QUANTITY, RoundingMode.DOWN);
         quantity = quantity.remainder(BUNDLE_QUANTITY);

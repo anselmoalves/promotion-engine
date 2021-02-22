@@ -18,7 +18,7 @@ public class Cart {
     }
 
     public void add(Item item) {
-        items.put(item.getProduct().getSku(), item);
+        items.put(item.getSku(), item);
     }
 
     public BigDecimal total() {

@@ -28,18 +28,18 @@ public class AppTest {
 
     @Test
     public void scenarioA() {
-        cart.add(new Item(new Product(SKU.A), BigDecimal.ONE));
-        cart.add(new Item(new Product(SKU.B), BigDecimal.ONE));
-        cart.add(new Item(new Product(SKU.C), BigDecimal.ONE));
+        cart.add(Item.of(SKU.A).withQuantity(BigDecimal.ONE));
+        cart.add(Item.of(SKU.B).withQuantity(BigDecimal.ONE));
+        cart.add(Item.of(SKU.C).withQuantity(BigDecimal.ONE));
 
         assertEquals(BigDecimal.valueOf(100), cart.total());
     }
 
     @Test
     public void scenarioB() {
-        cart.add(new Item(new Product(SKU.A), BigDecimal.valueOf(5)));
-        cart.add(new Item(new Product(SKU.B), BigDecimal.valueOf(5)));
-        cart.add(new Item(new Product(SKU.C), BigDecimal.ONE));
+        cart.add(Item.of(SKU.A).withQuantity(BigDecimal.valueOf(5)));
+        cart.add(Item.of(SKU.B).withQuantity(BigDecimal.valueOf(5)));
+        cart.add(Item.of(SKU.C).withQuantity(BigDecimal.ONE));
 
         assertEquals(BigDecimal.valueOf(370), cart.total());
     }
