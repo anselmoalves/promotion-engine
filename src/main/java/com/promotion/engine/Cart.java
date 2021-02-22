@@ -9,8 +9,8 @@ import java.util.Set;
 
 public class Cart {
 
-    private Map<SKU, Item> items;
-    private Set<Rule> rules;
+    private final Map<SKU, Item> items;
+    private final Set<Rule> rules;
 
     public Cart(Set<Rule> rules) {
         this.items = new HashMap<>();
