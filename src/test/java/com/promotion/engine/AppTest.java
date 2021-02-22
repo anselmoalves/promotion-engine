@@ -24,4 +24,13 @@ public class AppTest {
 
         assertEquals(BigDecimal.valueOf(100), cart.total());
     }
+
+    @Test
+    public void scenarioB() {
+        cart.add(new Item(new Product(SKU.A), BigDecimal.valueOf(5)));
+        cart.add(new Item(new Product(SKU.B), BigDecimal.valueOf(5)));
+        cart.add(new Item(new Product(SKU.C), BigDecimal.ONE));
+
+        assertEquals(BigDecimal.valueOf(370), cart.total());
+    }
 }
